@@ -1,5 +1,6 @@
 package com.rest.webservices.restfulwebservices;
 
+import static org.springframework.security.config.Customizer.withDefaults;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -14,7 +15,9 @@ public class SpringSecurityConfiguration {
 
         http.authorizeHttpRequests(auth -> auth.anyRequest().authenticated());
 
-        http.httpBasic(Customizer.withDefaults());
+        http.httpBasic(withDefaults());
+
+        http.csrf().disable();
 
         return http.build();
     }
