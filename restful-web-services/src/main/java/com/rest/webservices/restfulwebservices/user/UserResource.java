@@ -64,8 +64,8 @@ public class UserResource {
         return user.get().getPosts();
     }
 
-    @PostMapping("/users/{id}/{post}")
-    public ResponseEntity<Post> createPostForUser(@PathVariable int id, @PathVariable Post post){
+    @PostMapping("/users/{id}/posts")
+    public ResponseEntity<Post> createPostForUser(@PathVariable int id, @RequestBody Post post){
         Optional<User> user = userRepository.findById(id);
         if(user == null){
             throw new UserNotFoundException("id:"+id);
